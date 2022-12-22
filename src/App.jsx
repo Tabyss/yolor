@@ -1,51 +1,32 @@
 import { useState } from "react";
 import { FiCopy } from "react-icons/fi";
 import "./App.css";
-
-function hexPicker() {
-  let arr = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "0",
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-  ];
-  const line1 = [];
-  for (let i = 0; i < 6; i++) {
-    line1.push(arr[Math.floor(Math.random() * 16)]);
-  }
-  let queu = "#" + line1.join("");
-  return queu;
-}
+import HexConvert from "./control/Converter";
+import HexPicker from "./control/Picker";
 
 function App() {
   const [hex, setHex] = useState("#c0deff");
+  const [result, setResult] = useState()
 
   function handleValue(e) {
     e.preventDefault();
-    setHex(hexPicker());
+    setHex(HexPicker);
+  }
+  function convertColor() {
+    let get = document.getElementById("form").value;
+    let result = HexConvert(hex, get)
+    setResult(result)
   }
 
   function handleChange() {
-    setHex();
+    console.log(HexConvert(hex, "hsl"));
   }
 
   function copyText() {
-    const copy = document.getElementById("hexel");
+    const copy = document.getElementById("hexel").value;
     copy.focus;
     navigator.clipboard.writeText(hex);
-    console.log("Copy!")
+    console.log("Copy!");
   }
 
   return (
@@ -63,19 +44,28 @@ function App() {
         </div>
         <div className="app-gene">
           <div className="app-value">
-            <p id="hexel" type="text" onChange={handleChange} value={hex} >{hex}</p>
+            <select className="app-select" id="form" onChange={convertColor}>
+              <option value="hex">hex</option>
+              <option value="rgb">rgb</option>
+              <option value="hsl">hsl</option>
+            </select>
+            <p id="hexel" type="text" onChange={handleValue} value={hex}>
+              {result}
+            </p>
             <button
               onClick={copyText}
               style={{
                 backgroundColor: hex,
-                boxShadow: hex ? `0px 0px 5px ${hex}` : null ,
+                boxShadow: hex ? `0px 0px 5px ${hex}` : "none",
                 // color:  ? "black" : "white"
               }}
             >
-              <FiCopy value={{ style: { verticalAlign: 'middle' } }}/>
+              <FiCopy value={{ style: { verticalAlign: "middle" } }} />
             </button>
           </div>
           <button onClick={handleValue}>Generate</button>
+          <button onClick={handleChange}>Gen</button>
+          {/* <button onClick={handleChange()}>Gen1</button> */}
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-function hexConvert(hex, path) {
+function HexConvert(hex, path) {
     let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     //RGB
     let r = parseInt(result[1], [16]),
@@ -39,7 +39,9 @@ function hexConvert(hex, path) {
       return console.log(r + ", " + g + ", " + b);
     } else if (path === "hsl") {
       return console.log(h + ", " + s + ", " + l);
+    } else {
+      return console.log(hex)
     }
   }
 
-  export default hexConvert;
+  export default HexConvert;
