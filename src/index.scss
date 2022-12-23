@@ -48,8 +48,21 @@ body {
         background-color: #fff;
         border-radius: 10px;
         padding: .2em ;
+        .app-select{
+          border: none;
+          border-radius: .5em;
+          font-family: "Poppins";
+          font-weight: 500;
+          font-size: 1em;
+
+          padding: 0 .5em;
+          margin: 0 .5em;
+          .app-select:focus{
+            border: none;
+          }
+        }
         p {
-          width: 10vw;
+          width: 15vw;
           margin: 0 1em;
           font-family: "Poppins" !important;
           font-weight: 500;

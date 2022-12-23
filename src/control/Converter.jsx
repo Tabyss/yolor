@@ -36,11 +36,11 @@ function HexConvert(hex, path) {
       l = Math.round(l * 100);
     }
     if (path === "rgb") {
-      return console.log(r + ", " + g + ", " + b);
+      return (r + ", " + g + ", " + b);
     } else if (path === "hsl") {
-      return console.log(h + ", " + s + ", " + l);
+      return (h + ", " + s + ", " + l);
     } else {
-      return console.log(hex)
+      return (hex)
     }
   }
 

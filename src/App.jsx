@@ -6,16 +6,17 @@ import HexPicker from "./control/Picker";
 
 function App() {
   const [hex, setHex] = useState("#c0deff");
-  const [result, setResult] = useState()
+  const [result, setResult] = useState("Start!");
 
   function handleValue(e) {
     e.preventDefault();
     setHex(HexPicker);
+    setResult(HexPicker);
   }
   function convertColor() {
     let get = document.getElementById("form").value;
-    let result = HexConvert(hex, get)
-    setResult(result)
+    let end = HexConvert(hex, get);
+    setResult(end);
   }
 
   function handleChange() {
@@ -23,9 +24,10 @@ function App() {
   }
 
   function copyText() {
-    const copy = document.getElementById("hexel").value;
+    const copy = document.getElementById("hexel").innerHTML;
     copy.focus;
-    navigator.clipboard.writeText(hex);
+    // copy.select();
+    navigator.clipboard.writeText(copy);
     console.log("Copy!");
   }
 
@@ -44,12 +46,20 @@ function App() {
         </div>
         <div className="app-gene">
           <div className="app-value">
-            <select className="app-select" id="form" onChange={convertColor}>
+            <select
+              className="app-select"
+              id="form"
+              onChange={convertColor}
+              style={{
+                backgroundColor: hex,
+                // color:  ? "black" : "white"
+              }}
+            >
               <option value="hex">hex</option>
               <option value="rgb">rgb</option>
               <option value="hsl">hsl</option>
             </select>
-            <p id="hexel" type="text" onChange={handleValue} value={hex}>
+            <p id="hexel" onChange={handleValue} value={result}>
               {result}
             </p>
             <button
@@ -64,8 +74,6 @@ function App() {
             </button>
           </div>
           <button onClick={handleValue}>Generate</button>
-          <button onClick={handleChange}>Gen</button>
-          {/* <button onClick={handleChange()}>Gen1</button> */}
         </div>
       </div>
     </div>
