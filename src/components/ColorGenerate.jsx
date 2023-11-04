@@ -7,13 +7,22 @@ import HexPicker from "../control/Picker";
 
 function ColorGenerate() {
   const [active, setActive] = useState(false);
-
-  const pop = () => setActive(!active);
-
-  const [bw, setBw] = useState(false);
-
   const [hex, setHex] = useState(HexPicker);
   const [result, setResult] = useState("");
+  const [bw, setBw] = useState(false);
+  const [diff, setDiff] = useState("");
+
+  function differentColor() {
+    let take = HexConvert(hex, "hsl");
+    let split = take.split(", ");
+    let hues =
+      Number(split[0]) + 180 < 360
+        ? Number(split[0]) + 180
+        : Number(split[0]) - 180;
+    let satur = split[1];
+    let lumin = split[2];
+    return hues.toString() + ", " + satur + "%" + ", " + lumin + "%";
+  }
 
   function counterColor() {
     let take = HexConvert(hex, "hsl");
@@ -44,6 +53,7 @@ function ColorGenerate() {
   }
 
   useEffect(() => {
+    differentColor();
     counterColor();
   }, [hex]);
 
@@ -59,25 +69,19 @@ function ColorGenerate() {
           <div className="content-title-main">
             <h1 style={{ color: `${bw ? "black" : "white"}` }}>Pick Your</h1>
             <div className="content-title-main-1">
-              <Yolo fill={hex} className="yolo" />
+              <Yolo fill={`hsl(${differentColor()})`} className="yolo" />
               <div>
-                <h1 className="yolor">Yolor</h1>
-                <Asset5 fill={hex} />
+                <h1
+                  style={{ color: `hsl(${differentColor()})` }}
+                  className="yolor"
+                >
+                  Yolor
+                </h1>
+                <Asset5 fill={`hsl(${differentColor()})`} />
               </div>
               <h1 style={{ color: `${bw ? "black" : "white"}` }}>Day!</h1>
             </div>
           </div>
-          {/* <div className="content-card">
-                  <span
-                    className="content-card-color"
-                    style={{
-                      backgroundColor: hex,
-                      // color:  ? "black" : "white"
-                    }}
-                  ></span>
-                  <h1>YOLOR</h1>
-                  <p>{hex}</p>
-                </div> */}
         </div>
         <div className="content-value">
           <div className="content-value-nav">
