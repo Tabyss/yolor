@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiCopy } from "react-icons/fi";
 import { ReactComponent as Yolo } from "../assets/yolo-sign.svg";
 import { ReactComponent as Asset5 } from "../assets/Asset-5.svg";
@@ -10,19 +10,28 @@ function ColorGenerate() {
 
   const pop = () => setActive(!active);
 
+  const [bw, setBw] = useState(false);
+
   const [hex, setHex] = useState(HexPicker);
   const [result, setResult] = useState("");
 
+  function counterColor() {
+    let take = HexConvert(hex, "hsl");
+    let split = take.split(", ");
+    let lumi = split[2] > 55 ? setBw(true) : setBw(false);
+    return lumi;
+  }
+
   function handleValue() {
     setHex(HexPicker);
-    setActive(true);
+    setActive(false);
     document.getElementById("form").value = "hex";
   }
 
   function changeFormat() {
+    setActive(true);
     let get = document.getElementById("form").value;
     let end = HexConvert(hex, get);
-
     setResult(end);
   }
 
@@ -34,25 +43,28 @@ function ColorGenerate() {
     // copy.innerText = "Copied";
   }
 
+  useEffect(() => {
+    counterColor();
+  }, [hex]);
+
   return (
     <>
       <div
         className="content"
         style={{
           backgroundColor: hex,
-          // color:  ? "black" : "white"
         }}
       >
         <div className="content-title">
           <div className="content-title-main">
-            <h1>Pick Your</h1>
+            <h1 style={{ color: `${bw ? "black" : "white"}` }}>Pick Your</h1>
             <div className="content-title-main-1">
               <Yolo fill={hex} className="yolo" />
               <div>
                 <h1 className="yolor">Yolor</h1>
                 <Asset5 fill={hex} />
               </div>
-              <h1>Day!</h1>
+              <h1 style={{ color: `${bw ? "black" : "white"}` }}>Day!</h1>
             </div>
           </div>
           {/* <div className="content-card">
@@ -69,7 +81,7 @@ function ColorGenerate() {
         </div>
         <div className="content-value">
           <div className="content-value-nav">
-            <p>About</p>
+            <p style={{ color: `${bw ? "black" : "white"}` }}>About</p>
           </div>
           <div className="content-value-form">
             <select className="form-select" id="form" onChange={changeFormat}>
@@ -78,8 +90,8 @@ function ColorGenerate() {
               <option value="hsl">hsl</option>
             </select>
             <span></span>
-            <p id="hexel" onChange={handleValue} value={hex}>
-              {active ? hex : "Start!"}
+            <p id="hexel" onChange={handleValue} value={result}>
+              {active ? result : hex}
             </p>
             <button className="copy" onClick={copyText}>
               <FiCopy style={{ verticalAlign: "middle" }} />

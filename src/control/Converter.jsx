@@ -12,6 +12,7 @@ function HexConvert(hex, path) {
   
     let max = Math.max(r1, g1, b1),
       min = Math.min(r1, g1, b1);
+      
     let h,
       s,
       l = (max + min) / 2; //get Luminance
@@ -35,12 +36,12 @@ function HexConvert(hex, path) {
       s = Math.round(s * 100);
       l = Math.round(l * 100);
     }
-    if (path === "rgb") {
+    if (path == "rgb") {
       return (r + ", " + g + ", " + b);
-    } else if (path === "hsl") {
+    } else if (path == "hsl") {
       return (h + ", " + s + ", " + l);
     } else {
-      return (hex)
+      return (min)
     }
   }
 
