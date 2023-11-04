@@ -36,12 +36,12 @@ function HexConvert(hex, path) {
       s = Math.round(s * 100);
       l = Math.round(l * 100);
     }
-    if (path == "rgb") {
+    if (path === "rgb") {
       return (r + ", " + g + ", " + b);
-    } else if (path == "hsl") {
+    } else if (path === "hsl") {
       return (h + ", " + s + ", " + l);
     } else {
-      return (min)
+      return (hex)
     }
   }
 
