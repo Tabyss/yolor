@@ -12,6 +12,7 @@ function HexConvert(hex, path) {
   
     let max = Math.max(r1, g1, b1),
       min = Math.min(r1, g1, b1);
+      
     let h,
       s,
       l = (max + min) / 2; //get Luminance
