@@ -5,6 +5,10 @@
     transition: height 0.3s ease-in-out;
     &.active {
         height: 50%;
+        @media (max-width: 768px) {
+            height: 100%;
+        }
+
         .main-feat {
             visibility: visible;
             opacity: 1;
@@ -19,7 +23,8 @@
         opacity: 0;
         transition: opacity 0.2s ease-in-out 0.4s;
         @media (max-width: 768px) {
-            height: 40vh;
+            height: 45vh;
+            padding-bottom: 16px;
             display: flex;
             overflow: auto;
             flex-direction: column;
