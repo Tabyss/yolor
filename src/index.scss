@@ -1,214 +1,100 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 :root {
-  font-family: "Poppins";
-  --color-1: #262626;
+    font-family: "Poppins";
+    --color-1: #262626;
+    --color-2: #fff;
 }
 
 ::-webkit-scrollbar {
-  display: none;
-  overflow: hidden;
-  overflow-y: scroll;
+    display: none;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  display: block;
-  margin: 0;
-  overflow-x: hidden;
+    display: block;
+    margin: 0;
+    overflow-x: hidden;
 }
 
 .app {
-  display: block;
-  background-color: #fff;
-  border-radius: 20px;
-  margin: 1%;
-  &-main {
-    display: flex;
-    flex-direction: column;
-    height: 90vh;
-    .content {
-      display: grid;
-      grid-template-columns: auto auto;
-      padding: 2%;
-      border-radius: 25px;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      &-title {
-        display: flex;
-        flex-direction: row;
-        &-main {
-          h1 {
-            font-size: 5rem;
-            line-height: 1em;
-            color: var(--color-1);
-          }
-          &-1 {
-            display: flex;
-            gap: 1vw;
-            .yolo {
-              margin-top: 1vh;
-              height: 50px;
-              transform: rotate(-30deg);
-            }
-            .yolor {
-              padding: 0 1vw;
-            }
-          }
-        }
-        .content-card {
-          display: flex;
-          flex-direction: column;
-          z-index: 1;
-          padding: 20px;
-          width: 30vw;
-          height: 65vh;
-          background-color: #fff;
-          box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.25);
-          border-radius: 20px;
-          transform: rotate(15deg);
-          &-color {
-            height: 55vh;
-            border-radius: 10px;
-          }
-          h1,
-          p {
-            text-transform: uppercase;
-            color: var(--color-1);
-            padding: 0;
-          }
-        }
-      }
-      &-value {
-        display: flex;
-        flex-direction: column;
-        align-items: end;
-        justify-content: space-between;
-        &-form {
-          width: 40vw;
-          display: flex;
-          flex-direction: row;
-          background-color: #fff;
-          align-items: center;
-          border-radius: 10px;
-          padding: 0.3em;
-          .form-select {
-            margin: 0 4px;
-            padding: 8px;
-            border: 0;
-            color: var(--color-1);
-            border-radius: 6px;
-            text-transform: uppercase;
-            &:focus {
-              border: none;
-            }
-          }
-          span{
-            height: 100%;
-            width: 1px;
-            background-color: var(--color-1);
-          }
-          p {
-            width: 100%;
-            margin: 0 1em;
-            text-transform: uppercase;
-            color: var(--color-1);
-            font-family: "Poppins" !important;
-            font-weight: 500;
-            font-size: 1rem;
-          }
-          .generate {
-            padding: 8px 20px;
-            background-color: var(--color-1);
-            color: #fff;
-            border: none;
-            &:active {
-              background-color: #fff;
-            color: var(--color-1);
-            }
-          }
-          .copy {
-            margin: 0 10px;
-            padding: 8px 20px;
-            border-radius: 6px;
-            border: none;
-            background-color: #fff;
-            color: var(--color-1);
-            size: 1em;
-            &:active {
-              background-color: var(--color-1);
-              color: #fff;
-            }
-          }
-        }
-        button {
-          font-family: "Poppins" !important;
-          font-weight: 500;
-          padding: 0 1.5em;
-          border-radius: 6px;
-          cursor: pointer;
-        }
-      }
-    }
-  }
-  .footer{
     display: block;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    margin: 5px;
-    z-index: 10;
-    &-main{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      cursor: pointer;
-    }
-  }
-}
-.palette {
-  display: block;
-  margin: 5% 3%;
-  z-index: 1;
-  border-radius: 50px;
-  background-color: #fff;
-  .pal {
-    display: flex;
-    justify-content: center;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    height: 100vh;
+    overflow: hidden;
+
     &-main {
-      width: 100%;
-      &-goto{
+        height: 100%;
+
+        
+    }
+
+    &-footer {
         display: flex;
-        // background-color: var(--color-1);
-        p{
-          padding: 5px 12px;
-          border-radius: 0 0 15px 15px;
-          background-color: #fff;
-          color: var(--color-1);
+        position: sticky;
+        justify-content: center;
+        top: -50px;
+        bottom: 0;
+        width: 100%;
+        margin: 5px;
+        z-index: 10;
+        background: none;
+        &-main {
+            display: flex;
+            flex-direction: column;
+            padding: 10px 20px 0;
+            border-radius: 20px 20px 0 0;
+            align-items: center;
+            background-color: var(--color-2);
+            cursor: pointer;
         }
-        span{
-          display: flex;
-          width: 100vw;
-          height: 10vh;
-          border-radius: 15px;
-          background-color: var(--color-1);
+    }
+}
+
+.palette {
+    display: block;
+    margin: 5% 3%;
+    z-index: 1;
+    border-radius: 50px;
+    background-color: #fff;
+    .pal {
+        display: flex;
+        justify-content: center;
+        &-main {
+            width: 100%;
+            &-goto {
+                display: flex;
+                // background-color: var(--color-1);
+                p {
+                    padding: 5px 12px;
+                    border-radius: 0 0 15px 15px;
+                    background-color: #fff;
+                    color: var(--color-1);
+                }
+                span {
+                    display: flex;
+                    width: 100vw;
+                    height: 10vh;
+                    border-radius: 15px;
+                    background-color: var(--color-1);
+                }
+            }
         }
-      }
+        &-value {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 5em;
+            height: 5em;
+        }
     }
-    &-value {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 5em;
-      height: 5em;
-    }
-  }
 }
