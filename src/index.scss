@@ -31,6 +31,9 @@ body {
     padding: 20px;
     height: 100vh;
     overflow: hidden;
+    @media (max-width: 768px) {
+        padding: 12px;
+    }
 
     &-main {
         height: 100%;
